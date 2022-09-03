@@ -12,6 +12,14 @@ table(sapply(data, class))
 
 # % of missing data.
 sum(is.na(data))/prod(dim(data)) * 100
+<<<<<<< HEAD
+=======
+
+# Columns that contain missing data
+names(which(sapply(data, anyNA)))
+
+# EDA - Simeon
+>>>>>>> f99e9167e0872c6cbb0f866eb6d6580b3748561c
 
 # Columns that contain missing data
 names(which(sapply(data, anyNA)))
