@@ -1,3 +1,5 @@
+library(ggplot2)
+
 # Import GAIA data (GaiaSource_1000172165251650944_1000424567594791808)
 data <- read.csv("gaia.csv")
 
