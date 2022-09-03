@@ -40,6 +40,8 @@ ggplot(data, aes(x=phot_g_mean_mag)) +
 ggplot(data, aes(x=phot_g_mean_flux_over_error, y=phot_g_mean_mag)) + 
   geom_point()
 
+# Branch change test
+
 # EDA  - Shaam
 
 
