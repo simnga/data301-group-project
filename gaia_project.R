@@ -52,10 +52,6 @@ ggplot(data, aes(x=phot_g_mean_flux_over_error, y=phot_g_mean_mag)) +
   ylab("G-band mean magnitude") +
   ggtitle("Mean magnitude vs Mean flux divided by its error in G-band")
 
-ggplot(data, aes(x=ra_dec_corr, y=mean_varpi_factor_al)) + 
-  geom_point() +
-  geom_smooth(method = "lm", se = TRUE)
-
 # EDA  - Shaam
 
 
