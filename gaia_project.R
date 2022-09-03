@@ -44,3 +44,4 @@ ggplot(data, aes(x=phot_g_mean_flux_over_error, y=phot_g_mean_mag)) +
 
 
 # EDA - Tama
+
