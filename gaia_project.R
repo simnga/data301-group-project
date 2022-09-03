@@ -25,23 +25,36 @@ head(sort(colSums(sapply(data, is.na)), decreasing = TRUE), 5)
 data_numerical <- data[, sapply(data, class) == "numeric"]
 correlationMatrix <- cor(Filter(sd, data_numerical), method = "pearson", use = "complete.obs")
 
-# Top 5 correlated variables
+# Top 15 sorted correlated variables
 correlationMatrix[lower.tri(correlationMatrix,diag=TRUE)] <- NA
 correlationMatrix <- as.data.frame(as.table(correlationMatrix))
 correlationMatrix <- na.omit(correlationMatrix)
 correlationMatrix <- correlationMatrix[order(-abs(correlationMatrix$Freq)),]
-head(correlationMatrix, 10)
+head(correlationMatrix, 15)
 
 # EDA - Simeon
 ggplot(data, aes(x=phot_g_mean_flux_over_error)) +
-  geom_histogram(fill="steelblue", color="black")
+  geom_histogram(fill="steelblue", color="black") +
+  xlab("G-band mean flux divided by its error") +
+  ylab("Count") +
+  ggtitle("Distribution: Mean flux divided by its error in G-band")
 
 ggplot(data, aes(x=phot_g_mean_mag)) +
-  geom_histogram(fill="steelblue", color="black")
+  geom_histogram(fill="steelblue", color="black") +
+  xlab("G-band mean magnitude") +
+  ylab("Count") +
+  ggtitle("Distribution: Mean magnitude in G-band")
 
 ggplot(data, aes(x=phot_g_mean_flux_over_error, y=phot_g_mean_mag)) + 
-  geom_point()
+  geom_point() +
+  geom_smooth(se = FALSE, method = "gam", formula = y ~ s(log(x))) +
+  xlab("G-band mean flux divided by its error") +
+  ylab("G-band mean magnitude") +
+  ggtitle("Mean magnitude vs Mean flux divided by its error in G-band")
 
+ggplot(data, aes(x=ra_dec_corr, y=mean_varpi_factor_al)) + 
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE)
 
 # EDA  - Shaam
 
