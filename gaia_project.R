@@ -48,16 +48,17 @@ shapiro.test(data_numerical$teff_val)
 ggplot(data, aes(x=teff_val, y=bp_rp)) + 
   geom_point() +
   xlab("Stellar Effective Temperature") +
-  ylab("BP - RP colour") +
-  ggtitle("BP - RP colour vs Stellar Effective Temperature")
+  ylab("Bp - Rp colour") +
+  ggtitle("Bp - Rp colour vs Stellar Effective Temperature") + 
+  geom_smooth()
 
 # Absolute Magnitude vs Stellar Effective Temperature
 ggplot(data, aes(x=teff_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
   geom_point() +
   xlab("Stellar Effective Temperature") +
   ylab("Absolute magnitude") +
-  ggtitle("Absolute Magnitude vs Stellar Effective Temperature")
-
+  ggtitle("Absolute Magnitude vs Stellar Effective Temperature") +
+  geom_smooth()
 
 # EDA  - Shaam
 
