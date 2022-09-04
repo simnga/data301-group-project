@@ -33,24 +33,31 @@ correlationMatrix <- correlationMatrix[order(-abs(correlationMatrix$Freq)),]
 head(correlationMatrix, 15)
 
 # EDA - Simeon
-ggplot(data, aes(x=phot_g_mean_flux_over_error)) +
-  geom_histogram(fill="steelblue", color="black") +
-  xlab("G-band mean flux divided by its error") +
-  ylab("Count") +
-  ggtitle("Distribution: Mean flux divided by its error in G-band")
 
-ggplot(data, aes(x=phot_g_mean_mag)) +
+# Stellar Effective Temperature Distribution
+ggplot(data, aes(x=teff_val)) +
   geom_histogram(fill="steelblue", color="black") +
-  xlab("G-band mean magnitude") +
+  xlab("Stellar Effective Temperature") +
   ylab("Count") +
-  ggtitle("Distribution: Mean magnitude in G-band")
+  ggtitle("Stellar Effective Temperature Distribution")
 
-ggplot(data, aes(x=phot_g_mean_flux_over_error, y=phot_g_mean_mag)) + 
+# Normality Test
+shapiro.test(data_numerical$teff_val)
+
+# Bp-Rp vs Stellar Effective Temperature
+ggplot(data, aes(x=teff_val, y=bp_rp)) + 
   geom_point() +
-  geom_smooth(se = FALSE, method = "gam", formula = y ~ s(log(x))) +
-  xlab("G-band mean flux divided by its error") +
-  ylab("G-band mean magnitude") +
-  ggtitle("Mean magnitude vs Mean flux divided by its error in G-band")
+  xlab("Stellar Effective Temperature") +
+  ylab("BP - RP colour") +
+  ggtitle("BP - RP colour vs Stellar Effective Temperature")
+
+# Absolute Magnitude vs Stellar Effective Temperature
+ggplot(data, aes(x=teff_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
+  geom_point() +
+  xlab("Stellar Effective Temperature") +
+  ylab("Absolute magnitude") +
+  ggtitle("Absolute Magnitude vs Stellar Effective Temperature")
+
 
 # EDA  - Shaam
 
