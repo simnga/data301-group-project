@@ -76,6 +76,12 @@ ggplot(data, aes(x=lum_val)) +
 #Range of lum_val
 range(data$lum_val, na.rm = TRUE)
 
+# finding % difference in lum_val upper and lower percentiles
+up = (data$lum_val- data$lum_percentile_lower) / data$lum_val * 100
+low = (data$lum_percentile_upper- data$lum_val) / data$lum_val * 100
+mean(up, na.rm=TRUE)
+mean(low, na.rm=TRUE)
+
 # Absolute Magnitude vs Stellar Luminosity
 ggplot(data, aes(x=lum_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
   geom_point() +
