@@ -61,7 +61,31 @@ ggplot(data, aes(x=teff_val, y=phot_g_mean_mag+5*log10(parallax)-10)) +
   geom_smooth()
 
 # EDA  - Shaam
+# Stellar Radius Distribution
+ggplot(data, aes(x=radius_val)) +
+  geom_histogram(fill="steelblue", color="black") +
+  xlab("Stellar Radius (solRad)") +
+  ylab("Count") +
+  ggtitle("Stellar Radius Distribution")
 
+# Normality Test
+ks.test(data_numerical$radius_val, 'pnorm')
+
+# Bp-Rp vs Stellar Radius
+ggplot(data, aes(x=radius_val, y=bp_rp)) + 
+  geom_point() +
+  xlab("Stellar Radius (solRad)") +
+  ylab("Bp - Rp colour (mag)") +
+  ggtitle("Bp - Rp colour vs StellarRadius") + 
+  geom_smooth()
+
+# Absolute Magnitude vs Stellar Radius
+ggplot(data, aes(x=radius_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
+  geom_point() +
+  xlab("Stellar Radius (solRad)") +
+  ylab("Absolute magnitude (mag)") +
+  ggtitle("Absolute Magnitude vs Stellar Radius") +
+  geom_smooth()
 
 # EDA - Tama
 
@@ -90,3 +114,18 @@ ggplot(data, aes(x=lum_val, y=phot_g_mean_mag+5*log10(parallax)-10)) +
   ggtitle("Absolute Magnitude vs Stellar Luminosity") +
   geom_smooth()
 
+#Shaam edits (units)
+ggplot(data, aes(x=lum_val)) +
+  geom_histogram(fill="steelblue", color="black", bins = 40) +
+  xlab("Stellar Luminosity (solLum)") +
+  ylab("Count") +
+  xlim(0, 6) +
+  ggtitle("Stellar Luminosity Distribution")
+
+# Absolute Magnitude vs Stellar Radius
+ggplot(data, aes(x=lum_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
+  geom_point() +
+  xlab("Stellar Luminosity (solLum)") +
+  ylab("Absolute magnitude (mag)") +
+  ggtitle("Absolute Magnitude vs Stellar Luminosity") +
+  geom_smooth()
