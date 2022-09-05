@@ -65,3 +65,22 @@ ggplot(data, aes(x=teff_val, y=phot_g_mean_mag+5*log10(parallax)-10)) +
 
 # EDA - Tama
 
+# Distribution of lum_val
+ggplot(data, aes(x=lum_val)) +
+  geom_histogram(fill="steelblue", color="black", bins = 40) +
+  xlab("Stellar Luminosity") +
+  ylab("Count") +
+  xlim(0, 6) +
+  ggtitle("Stellar Luminosity")
+
+#Range of lum_val
+range(data$lum_val, na.rm = TRUE)
+
+# Absolute Magnitude vs Stellar Luminosity
+ggplot(data, aes(x=lum_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
+  geom_point() +
+  xlab("Stellar Luminosity") +
+  ylab("Absolute magnitude") +
+  ggtitle("Absolute Magnitude vs Stellar Luminosity") +
+  geom_smooth()
+
