@@ -37,7 +37,7 @@ head(correlationMatrix, 15)
 # Stellar Effective Temperature Distribution
 ggplot(data, aes(x=teff_val)) +
   geom_histogram(fill="steelblue", color="black") +
-  xlab("Stellar Effective Temperature") +
+  xlab("Stellar Effective Temperature (K)") +
   ylab("Count") +
   ggtitle("Stellar Effective Temperature Distribution")
 
@@ -47,16 +47,16 @@ shapiro.test(data_numerical$teff_val)
 # Bp-Rp vs Stellar Effective Temperature
 ggplot(data, aes(x=teff_val, y=bp_rp)) + 
   geom_point() +
-  xlab("Stellar Effective Temperature") +
-  ylab("Bp - Rp colour") +
+  xlab("Stellar Effective Temperature (K)") +
+  ylab("Bp - Rp colour (M)") +
   ggtitle("Bp - Rp colour vs Stellar Effective Temperature") + 
   geom_smooth()
 
 # Absolute Magnitude vs Stellar Effective Temperature
 ggplot(data, aes(x=teff_val, y=phot_g_mean_mag+5*log10(parallax)-10)) + 
   geom_point() +
-  xlab("Stellar Effective Temperature") +
-  ylab("Absolute magnitude") +
+  xlab("Stellar Effective Temperature (K)") +
+  ylab("Absolute magnitude (M)") +
   ggtitle("Absolute Magnitude vs Stellar Effective Temperature") +
   geom_smooth()
 
